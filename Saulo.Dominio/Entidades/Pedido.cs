@@ -1,9 +1,8 @@
-﻿using Saulo.Dominio.ObjetoDeValor;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
-namespace Saulo.Dominio.Entidades
+namespace Saulo.Dominio
 {
     public class Pedido : Entidade
     {
@@ -16,5 +15,13 @@ namespace Saulo.Dominio.Entidades
         /// Deve ter pelo menos um item ou muitos itens
         /// </summary>
         public ICollection<ItemPedido> Itens { get; set; }
+
+        public override void Validar()
+        {
+            LimparMensagensValidacao();
+            
+            if (!Itens.Any())
+                AdicionarCritica("Crítica - Pedido deve ter pelo menos um item ou muitos itens");
+        }
     }
 }

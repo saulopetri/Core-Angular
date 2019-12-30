@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Saulo.Dominio.Entidades
+namespace Saulo.Dominio
 {
     public class Produto: Entidade
     {
@@ -10,5 +8,10 @@ namespace Saulo.Dominio.Entidades
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
 
+        public override void Validar()
+        {
+            if (String.IsNullOrEmpty(Nome))
+                AdicionarCritica("Nome do produto não informado");
+        }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Saulo.Dominio.Enumerados
+﻿namespace Saulo.Dominio
 {
     public enum TipoFormaPagamentoEnum
     {

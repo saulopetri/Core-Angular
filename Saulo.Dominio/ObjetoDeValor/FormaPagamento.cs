@@ -1,9 +1,4 @@
-﻿using Saulo.Dominio.Enumerados;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Saulo.Dominio.ObjetoDeValor
+﻿namespace Saulo.Dominio
 {
     public class FormaPagamento
     {
