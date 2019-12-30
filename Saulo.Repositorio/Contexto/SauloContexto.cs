@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JetBrains.Annotations;
+using Microsoft.EntityFrameworkCore;
 using Saulo.Dominio;
+using Saulo.Repositorio.Config;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Saulo.Repositorio.Contexto
+namespace Saulo.Repositorio
 {
     public class SauloContexto : DbContext
     {
@@ -13,5 +15,21 @@ namespace Saulo.Repositorio.Contexto
         public DbSet<Pedido> Pedido { get; set; }
         public DbSet<ItemPedido> ItemPedido { get; set; }
         public DbSet<FormaPagamento> FormaPagamento { get; set; }
+
+        public SauloContexto(DbContextOptions options) : base(options)
+        {
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+            modelBuilder.ApplyConfiguration(new ProdutoConfiguration());
+            modelBuilder.ApplyConfiguration(new PedidoConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
+            modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
